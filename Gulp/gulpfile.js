@@ -1,14 +1,16 @@
 
 
-var gulp 		= require('gulp');
-var path  		= require('path');
-var gutil  		= require('gulp-util');
-var plumber  	= require('gulp-plumber');
-var imagemin 	= require('gulp-imagemin'); //Minify PNG, JPEG, GIF and SVG images
-var cache 		= require('gulp-cache');
-var del 		= require('del');
+var gulp		= require('gulp');
+var path		= require('path');
+var gutil		= require('gulp-util'); // Utility functions for gulp plugins
+var plumber		= require('gulp-plumber'); // Prevent pipe breaking caused by errors from gulp plugins
+var imagemin	= require('gulp-imagemin'); // Minify PNG, JPEG, GIF and SVG images
+var cache		= require('gulp-cache'); // A cache proxy task for Gulp
+var del			= require('del'); // Delete files/folders using globs
 
-// paths setup
+
+
+// Paths setup
 var paths = {
 	scripts : ["js/**/*.js"],
 	s_less	: ["styles/less/**/*.less"],
@@ -18,9 +20,12 @@ var paths = {
 };
 
 
+
 gulp.task('hello', function(){
 	console.log("Hello World")
 });
+
+
 
 /*--------------------------------------------------------------------------*/ 
 /** TASKS FOR DEV
@@ -80,14 +85,12 @@ gulp.task('hello', function(){
 
 
 
-
-
 /*--------------------------------------------------------------------------*/ 
 /** TASKS FOR GRAFISTS
  *
  *
  ****************************************************************************/
-	// ???
+	// Minify Image
 	gulp.task('images', function() {
 		return gulp.src('src/images/**/*')
 			// only changed or new image are compressed
@@ -96,7 +99,7 @@ gulp.task('hello', function(){
 			.pipe(notify({ message: 'Images task complete' }));
 	});
 
-	// ???
+	// Rename Images (Remove special caracters)
 	
 	// ???
 	
