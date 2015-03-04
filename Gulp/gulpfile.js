@@ -2,13 +2,20 @@
 
 var gulp		= require('gulp');
 var path		= require('path');
-var gutil		= require('gulp-util'); // Utility functions for gulp plugins
-var plumber		= require('gulp-plumber'); // Prevent pipe breaking caused by errors from gulp plugins
+
+var cache		= require('gulp-cache'); 	// A cache proxy task for Gulp
+var gutil		= require('gulp-util'); 	// Utility functions for gulp plugins
+var plumber		= require('gulp-plumber'); 	// Prevent pipe breaking caused by errors from gulp plugins
+
 var imagemin	= require('gulp-imagemin'); // Minify PNG, JPEG, GIF and SVG images
-var cache		= require('gulp-cache'); // A cache proxy task for Gulp
-var del			= require('del'); // Delete files/folders using globs
 
-
+var del			= require('del'); 			// Delete files/folders using globs
+var filter 		= require('gulp-filter'); 	// Enables you to work on a subset of the original files by filtering them using globbing. When you're done and want all the original files back you just call the restore method.
+var less 		= require('gulp-less'); 	// Less for Gulp
+var notify 		= require("gulp-notify"); 	// send messages
+var shell 		= require('gulp-shell'); 	// A handy command line interface for gulp
+var browserSync = require("browser-sync"); 	// Livereload and sync with others devices
+var reload 		= browserSync.reload;
 
 // Paths setup
 var paths = {
@@ -66,6 +73,23 @@ gulp.task('hello', function(){
 	 *
 	 *
 	 ****************************************/
+		gulp.task('browser-sync', function() {
+		    //watch files
+		    var files = [
+			    'styles/main.css',
+			    'scripts/**/*.js',
+			    'images/**/*',
+			    'templates/**/*.twig'
+		    ];
+		    //initialize browsersync
+		    browserSync.init(files, {
+		    //browsersync with a php server
+		    proxy: "drupal8.dev",
+		    notify: true
+		    });
+		});
+
+
 
 	/** Clear Cache **************************
 	 *
@@ -74,6 +98,8 @@ gulp.task('hello', function(){
 		gulp.task('cc', function (done) {
 			return cache.clearAll(done);
 		});
+
+
 
 	/** Clean *******************************
 	 *

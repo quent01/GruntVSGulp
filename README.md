@@ -9,6 +9,7 @@
 - [using-external-config-file](https://github.com/gulpjs/gulp/blob/master/docs/recipes/using-external-config-file.md) :
 - [Automating-Web-Performance-Measurement](http://updates.html5rocks.com/2014/06/Automating-Web-Performance-Measurement) : 
 - [browser-sync](https://www.npmjs.com/package/browser-sync) :
+- [Gulpfile for Drupal 8](https://github.com/zetagraph/monoset/blob/master/gulpfile.js) : 
 
 
 + **Gulp for Grafistes**
